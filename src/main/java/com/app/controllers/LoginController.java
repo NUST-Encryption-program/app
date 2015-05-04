@@ -1,0 +1,49 @@
+package com.app.controllers;
+
+
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.app.model.LoginForm;
+import com.app.service.UserService;
+
+@Controller
+public class LoginController {
+		
+	@Autowired
+	//@Qualifier("userService") 
+	//@Resource
+	private UserService userService;
+	//private UserDao userDao;
+
+	@RequestMapping(value="login")
+		
+    public ModelAndView login(HttpServletRequest request,HttpServletResponse response,LoginForm command )
+	{
+		
+		
+        String username = command.getUsername();
+        
+        String password = command.getPassword();
+        
+      
+        if(username.equals(null) || password.equals(null))
+        {
+        	return null;
+        }
+        
+        userService.insertUser(command);
+        
+        ModelAndView mv = new ModelAndView("/test/index","command","LOGIN SUCCESS, " + username);
+        
+        return mv;
+    }
+	
+	
+}
