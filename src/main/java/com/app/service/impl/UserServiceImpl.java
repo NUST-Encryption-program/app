@@ -8,7 +8,6 @@ import com.app.dao.UserDao;
 import com.app.model.LoginForm;
 import com.app.service.UserService;
 
-//@Controller 
 @Service
 @Transactional
 public class UserServiceImpl implements UserService
@@ -27,6 +26,16 @@ public class UserServiceImpl implements UserService
 	    	
 	        return 0;
 	        
-	    }	    
+	    }
+
+
+		public UserDao getUserDao() {
+			return userDao;
+		}
+
+
+		public void setUserDao(UserDao userDao) {
+			this.userDao = userDao;
+		}	    
 	  
 }

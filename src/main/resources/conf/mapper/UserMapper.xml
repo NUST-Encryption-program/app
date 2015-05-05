@@ -8,8 +8,8 @@
 <mapper namespace="com.app.dao.UserDao">
    
  <resultMap id="UserDao" type="LoginForm" >
-    <result column="username" property="username" jdbcType="VARCHAR" />
-    <result column="pwd" property="password" jdbcType="VARCHAR" />
+    <result column="username" property="username" />
+    <result column="pwd" property="password" />
   </resultMap>        
   <insert id="insertUser" parameterType="LoginForm">
       insert into users(username, pwd) values (#{username}, #{password})

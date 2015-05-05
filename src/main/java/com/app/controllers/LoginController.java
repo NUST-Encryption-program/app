@@ -17,10 +17,8 @@ import com.app.service.UserService;
 public class LoginController {
 		
 	@Autowired
-	//@Qualifier("userService") 
-	//@Resource
 	private UserService userService;
-	//private UserDao userDao;
+
 
 	@RequestMapping(value="login")
 		
