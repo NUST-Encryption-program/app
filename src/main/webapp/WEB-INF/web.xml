@@ -7,7 +7,7 @@
   <context-param>
       <param-name>contextConfigLocation</param-name>
       <param-value>
-      	classpath*:conf/spring/spring-base.xml 
+      	classpath*:conf/spring/spring*.xml 
       	classpath*:conf/mysqlConfig/spring-mybatis.xml
       </param-value>
   </context-param>
