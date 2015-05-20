@@ -15,7 +15,8 @@ import com.app.model.LoginForm;
 import com.app.service.UserService;
 
 @Controller
-public class LoginController {
+public class LoginController 
+{
 		
 	@Autowired
 	private UserService userService;
