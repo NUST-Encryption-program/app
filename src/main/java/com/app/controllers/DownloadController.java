@@ -18,7 +18,8 @@ import com.app.constants.Session;
  */
 
 @Controller
-public class DownloadController {
+public class DownloadController 
+{
 	
 	@RequestMapping(value="/download/api")
 	 public ModelAndView download(HttpServletRequest request,HttpServletResponse response)
