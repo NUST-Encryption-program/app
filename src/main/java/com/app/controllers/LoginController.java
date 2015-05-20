@@ -23,29 +23,26 @@ public class LoginController {
 
 	@RequestMapping(value="login")
 		
-        public ModelAndView login(HttpServletRequest request,HttpServletResponse response,LoginForm command )
+        public ModelAndView login(HttpServletRequest request,HttpServletResponse response,LoginForm command, HttpSession httpSession)
 	{
 		
-		
-        String username = command.getUsername();
-        
-        String password = command.getPassword();
-        
-      
-        if(username.equals(null) || password.equals(null))
-        {
-        	return null;
-        }
-        
-        if (userService.insertUser(command) == 0)
-        {
-        	httpSession.setAttribute(Session.CURRENT_USER_ATTR_NAME, command);
-        }
-        
-        ModelAndView mv = new ModelAndView("/test/index","command","LOGIN SUCCESS, " + username);
-        
-        return mv;
-    }
-	
-	
+	        String username = command.getUsername();
+	        
+	        String password = command.getPassword();
+	        
+	      
+	        if(username.equals(null) || password.equals(null))
+	        {
+	        	return null;
+	        }
+	        
+	        if (userService.insertUser(command) == 0)
+	        {
+	        	httpSession.setAttribute(Session.CURRENT_USER_ATTR_NAME, command);
+	        }
+	        
+	        ModelAndView mv = new ModelAndView("/test/index","command","LOGIN SUCCESS, " + username);
+	        
+	        return mv;
+    	}
 }
