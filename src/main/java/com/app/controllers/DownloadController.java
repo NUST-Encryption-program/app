@@ -10,9 +10,13 @@ import java.net.URLEncoder;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.app.constants.FileConstant;
+import com.app.dao.FileDao;
 
 /**
  * 
@@ -25,10 +29,15 @@ import org.springframework.web.servlet.ModelAndView;
 public class DownloadController {
 	
 	//暂时写死
-	private static String fileName = "api.zip";
 	
-	File file = new File("E:\\gaoyanshou" + "\\" + fileName);
 	
+	//File file = new File("E:\\gaoyanshou" + "\\" + fileName);
+	
+	//使用spring自动注入
+	@Autowired
+	private FileDao fileDao;
+	
+	private String fileName = null;
 	
 	OutputStream out = null;
 	
@@ -41,10 +50,9 @@ public class DownloadController {
 		
 	 	//HttpSession session = request.getSession(); 
 			    
-	
 		//download api	
 		try {
-			
+			fileName = fileDao.getFileDao(FileConstant.KEY_JAVA_DOWN_FILE).getFileName();
 			fileName =  URLEncoder.encode(fileName, "UTF-8");
 			
 		} catch (UnsupportedEncodingException e) {
@@ -52,7 +60,7 @@ public class DownloadController {
 			e.printStackTrace();
 		}
 	
-		if (downloadFile(request, response, file) == true)
+		if (downloadFile(request, response, fileDao.getFileDao(FileConstant.KEY_JAVA_DOWN_FILE).getFile()) == true)
 		{
 			return mv;
 		}
