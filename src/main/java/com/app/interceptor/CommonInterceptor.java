@@ -11,8 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.app.constants.Session;
 
-public class CommonInterceptor implements HandlerInterceptor
-{
+public class CommonInterceptor implements HandlerInterceptor{
 
     private List<String> excludedUrls;
     
@@ -23,13 +22,11 @@ public class CommonInterceptor implements HandlerInterceptor
     	System.out.println("after starting....");      
     }
 
-    public List<String> getExcludedUrls() 
-    {
+    public List<String> getExcludedUrls() {
         return excludedUrls;
     }
 
-    public void setExcludedUrls(List<String> excludedUrls) 
-    {
+    public void setExcludedUrls(List<String> excludedUrls) {
         this.excludedUrls = excludedUrls;
     }
 

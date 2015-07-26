@@ -15,35 +15,40 @@ import com.app.model.LoginForm;
 import com.app.service.UserService;
 
 @Controller
-public class LoginController 
-{
+public class LoginController {
 		
 	@Autowired
 	private UserService userService;
 
-
+	
 	@RequestMapping(value="login")
-		
-        public ModelAndView login(HttpServletRequest request,HttpServletResponse response,LoginForm command, HttpSession httpSession)
+	
+    public ModelAndView login(HttpServletRequest request,HttpServletResponse response,LoginForm command,HttpSession httpSession )
 	{
 		
-	        String username = command.getUsername();
-	        
-	        String password = command.getPassword();
-	        
-	      
-	        if(username.equals(null) || password.equals(null))
-	        {
-	        	return null;
-	        }
-	        
-	        if (userService.insertUser(command) == 0)
-	        {
-	        	httpSession.setAttribute(Session.CURRENT_USER_ATTR_NAME, command);
-	        }
-	        
-	        ModelAndView mv = new ModelAndView("/test/index","command","LOGIN SUCCESS, " + username);
-	        
-	        return mv;
-    	}
+		
+        String username = command.getUsername();
+        
+        String password = command.getPassword();
+        
+      
+        if(username.equals(null) || password.equals(null))
+        {
+        	return null;
+        }
+        
+        if (userService.insertUser(command) == 0)
+        {
+        	httpSession.setAttribute(Session.CURRENT_USER_ATTR_NAME, command);
+        }
+        
+        ModelAndView mv = new ModelAndView("/test/index","command","LOGIN SUCCESS, " + username);
+        
+        return mv;
+    }
+    @RequestMapping("/logins/login")
+    public String getCarPartialPage() {
+        return "logins/login";
+    }
+	
 }
