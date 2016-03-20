@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.app.constants.FileConstant;
@@ -44,7 +47,7 @@ public class DownloadController {
 	FileInputStream in = null;
 	
 	@RequestMapping(value="/download/api")
-	 public ModelAndView download(HttpServletRequest request,HttpServletResponse response)
+	 public ModelAndView downloadApi(HttpServletRequest request,HttpServletResponse response)
 	 {
 		ModelAndView mv = new ModelAndView("/test/index","command","download sucessful");
 		
@@ -68,6 +71,11 @@ public class DownloadController {
 		return null;
 	 	        
 	 }
+	
+	@RequestMapping(value="/downloads/app")
+    public @ResponseBody void downloadsapp() {
+        System.out.println("only test");
+    }
 	 
 	boolean downloadFile(HttpServletRequest request,HttpServletResponse response,File file)
 	{
