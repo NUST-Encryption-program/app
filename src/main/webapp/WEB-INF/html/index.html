@@ -1,12 +1,12 @@
 ﻿<!DOCTYPE HTML>
-<html>
+<html ng-app>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>云密码</title>
+<title>数云密码</title>
 <link href="resources/css/global.css" rel="stylesheet" type="text/css">
 <link href="resources/css/reset.css" rel="stylesheet" type="text/css">
 <link href="resources/css/index.css" rel="stylesheet" type="text/css">
-<script src="resources/js/jquery-1.11.3.min.js"></script>
+<script src="js/jquery-1.11.3.min.js"></script>
 </head>
 
 <body>
@@ -25,40 +25,12 @@
   <div class="m-top">
     <div class="nav">
       <div class="logo"><img src="resources/images/logo.gif" width="110" height="100" /></div>
-      <div class="txt">云密码</div>
-      <div class="catalog">
-        <ul>
-          <li class="z-sel"><a href="#">
-            <div class="cn">首 页</div>
-            <div class="en">HOME</div>
-          </a></li>
-          <li><a href="#">
-            <div class="cn">新 闻</div>
-            <div class="en">NEWS</div>
-          </a></li>
-          <li><a href="#">
-            <div class="cn">学 术</div>
-            <div class="en">ACADEMIC</div>
-          </a></li>
-          <li><a href="#">
-            <div class="cn">产品介绍</div>
-            <div class="en">PRODUCT</div>
-          </a></li>
-          <li><a href="#">
-            <div class="cn">安全论坛</div>
-            <div class="en">FORUM</div>
-          </a></li>
-          <li><a href="#">
-            <div class="cn">下 载</div>
-            <div class="en">DOWNLOAD</div>
-          </a></li>
-          <li><a href="#">
-            <div class="cn">团队介绍</div>
-            <div class="en">TEAM</div>
-          </a></li>
-          <li><a href="#">
-            <div class="cn">人才招聘</div>
-            <div class="en">RECRUITMENT</div>
+      <div class="txt">数云密码</div>
+      <div class="catalog" ng-controller="titleController">
+        <ul ng-repeat="item in titleItems">
+          <li class="{{item.titleClass}}"><a href="{{item.http}}">
+            <div class="cn">{{item.zhName}}</div>
+            <div class="en">{{item.enName}}</div>
           </a></li>
         </ul>
         <div class="f-cb"></div>
@@ -69,7 +41,7 @@
   <div class="m-banner">
     <div id="playBox">
       <div class="playBox">
-        <script src="resources/js/banner.js"></script>
+        <script src="js/banner.js"></script>
         <div class="pre"></div>
         <div class="next"></div>
         <div class="smalltitle">
@@ -87,48 +59,32 @@
       </div>
     </div>
   </div>
-
+</div>
 <div class="g-bd">
   <div class="row1">
     <div class="tit">
-      <span><a href="#">MORE&gt;&gt;</a></span>
+      <span><a href="http://lxy.njust.edu.cn/_s73/xydt/list.psp">MORE&gt;&gt;</a></span>
       <h2>新闻动态</h2>
       <div class="f-cb"></div>
     </div>
-    <div class="con">
+    <div class="con" ng-controller="NewsController">
       <div class="news-pic">
         <div class="pic"><img src="resources/images/news-pic-1.jpg" /></div>
-        <h1>积极开展中小学生科学小实验</h1>
-        <div class="txt">科学非常有趣，成功带给你的喜悦会使你更加热爱科学！在一次无意间，我做了一个小小的实验，并借助互联网的力量，弄明白了它其中的秘密</div>
+        <h1>理学院开展预备党员座谈会</h1>
+        <div class="txt">6月3日，理学院2013级邀请到了理学院前党委书记杨泰敏老同志参加年级第三批预备党员的座谈会，杨老师为同学们生动幽默地讲述了该如何做一名合格党员。
+</div>
       </div>
       <div class="news-list1">
+	  
         <dl>
-          <dt><span><a href="#">MORE</a></span>2015-12</dt>
-          <dd><span>2015-11-06</span><a href="contents/page.html">积极开展中小学生科学小实验</a></dd>
-          <dd><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></dd>
-          <dd><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></dd>
-          <dd><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></dd>
-          <dd><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></dd>
-          <dd><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></dd>
-          <dd><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></dd>
-          <dd><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></dd>
-          <dd><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></dd>
-          <dd><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></dd>
+          <dt><span><a href="#">MORE</a></span>2016-05</dt>
+          <dd ng-repeat="item in newsItems"><span>{{item.date}}</span><a href="{{item.http}}">{{item.content}}</a></dd>
         </dl>
       </div>
       <div class="news-list2">
         <dl>
-          <dt><span><a href="#">MORE</a></span>2015-11</dt>
-          <dd><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></dd>
-          <dd><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></dd>
-          <dd><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></dd>
-          <dd><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></dd>
-          <dd><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></dd>
-          <dd><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></dd>
-          <dd><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></dd>
-          <dd><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></dd>
-          <dd><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></dd>
-          <dd><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></dd>
+          <dt><span><a href="#">MORE</a></span>2016-04</dt>
+          <dd ng-repeat="item in oldNewsItems"><span>{{item.date}}</span><a href="{{item.http}}">{{item.content}}</a></dd>
         </dl>
       </div>
       <div class="f-cb"></div>
@@ -141,18 +97,15 @@
         <h2>学术动态<small>LEARNING</small></h2>
         <div class="f-cb"></div>
       </div>
-      <div class="con">
+      <div class="con" ng-controller="LearningController">
         <div class="pic"><a href="#"><img src="resources/images/news-pic-2.jpg" /></a></div>
         <dl>
-          <dt><a href="#">积极开展中小学生科学小实验</a></dt>
-          <dd>科学非常有趣，成功带给你的喜悦会使你更加热爱科学！在一次无意间，我做了一个小小的实验，并借助互联网的力量，弄明白了它其中的秘密</dd>
+          <dt><a href="http://lxy.njust.edu.cn/_s73/ad/6a/c4428a109930/page.psp">江苏大学密码研究课题组来理学院数学实验中心交流访问</a></dt>
+          <dd>为促进学科之间的相互交流，我校理学院与江苏大学计算机学院的师生于4月3日在理学院数学实验中心举办了一场密码与信息安全学术交流活动。</dd>
         </dl>
         <div class="f-cb"></div>
         <ul>
-          <li><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></li>
-          <li><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></li>
-          <li><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></li>
-          <li><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></li>
+          <li ng-repeat="item in learningItems"><span>{{item.date}}</span><a href="{{item.http}}">{{item.content}}</a></li>
         </ul>
       </div>
     </div>
@@ -162,37 +115,23 @@
         <h2>安全论坛<small>SAFETY</small></h2>
         <div class="f-cb"></div>
       </div>
-      <div class="con">
+      <div class="con" ng-controller="safetyController">
         <dl class="item1">
           <dt><span><a href="#">MORE</a></span>最新问答</dt>
-          <dd><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></dd>
-          <dd><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></dd>
-          <dd><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></dd>
-          <dd><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></dd>
-          <dd><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></dd>
+          <dd ng-repeat="item in questionItems"><span>{{item.date}}</span><a href="{{item.http}}">{{item.content}}</a></dd>
         </dl>
         <dl class="item2">
           <dt><span><a href="#">MORE</a></span>最热评论</dt>
-          <dd><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></dd>
-          <dd><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></dd>
-          <dd><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></dd>
-          <dd><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></dd>
-          <dd><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></dd>
+          <dd ng-repeat="item in commentItems"><span>{{item.date}}</span><a href="{{item.http}}">{{item.content}}</a></dd>
         </dl>
         <div class="space1"></div>
         <dl class="item3">
           <dt><span><a href="#">MORE</a></span>最新分享</dt>
-          <dd><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></dd>
-          <dd><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></dd>
-          <dd><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></dd>
-          <dd><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></dd>
+          <dd ng-repeat="item in shareItems"><span>{{item.date}}</span><a href="{{item.http}}">{{item.content}}</a></dd>
         </dl>
         <dl class="item4">
           <dt><span><a href="#">MORE</a></span>最热下载</dt>
-          <dd><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></dd>
-          <dd><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></dd>
-          <dd><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></dd>
-          <dd><span>2015-11-06</span><a href="#">积极开展中小学生科学小实验</a></dd>
+          <dd ng-repeat="item in downloadItems"><span>{{item.date}}</span><a href="{{item.http}}">{{item.content}}</a></dd>
         </dl>
         <div class="f-cb"></div>
       </div>
@@ -200,38 +139,25 @@
     <div class="f-cb"></div>
   </div>
 </div>
-</div>
 <div class="g-ft">
   <div class="m-link">
-    <div class="g-bd">
+    <div class="g-bd" ng-controller="footerController">
       <dl>
         <dt>SCIENCE</dt>
-        <dd><a href="#">信息安全</a></dd>
-        <dd><a href="#">算法研究</a></dd>
-        <dd><a href="#">云计算</a></dd>
-        <dd><a href="#">数据挖掘</a></dd>
+        <dd ng-repeat="item in scienceItems"><a href="{{item.http}}">{{item.content}}</a></dd>
       </dl>
       <dl>
         <dt>PRODUCTS</dt>
         <dd><a href="#">CloudAPI</a></dd>
-        <dd><a href="#">APP下载</a></dd>
-        <dd><a href="#">安全论坛</a></dd>
-        <dd><a href="#">数据API</a></dd>
-        <dd><a href="#">微老师</a></dd>
+		<dd ng-repeat="item in productItems"><a href="{{item.http}}">{{item.content}}</a></dd>
       </dl>
       <dl>
         <dt>ABOUT</dt>
-        <dd><a href="#">关于我们</a></dd>
-        <dd><a href="#">开放资源</a></dd>
-        <dd><a href="#">工作机会</a></dd>
-        <dd><a href="#">媒体报道</a></dd>
+		<dd ng-repeat="item in aboutItems"><a href="{{item.http}}">{{item.content}}</a></dd>
       </dl>
       <dl>
         <dt>HELP</dt>
-        <dd><a href="#">联系我们</a></dd>
-        <dd><a href="#">开源社区</a></dd>
-        <dd><a href="#">技术支持</a></dd>
-        <dd><a href="#">服务</a></dd>
+		<dd ng-repeat="item in helpItems"><a href="{{item.http}}">{{item.content}}</a></dd>
       </dl>
       <div class="f-cb"></div>
     </div>
@@ -240,10 +166,13 @@
     <div class="g-bd">
       <div class="txt1">访问量10000</div>
       <div class="txt2">Copyright &copy; 白云互联科技</div>
-      <div class="txt1"><a href="#">粤ICP备14043701号-1</a></div>
+      <div class="txt1"><a href="#">苏ICP备14043701号-1</a></div>
       <div class="f-cb"></div>
     </div>
   </div>
 </div>
+<script src="resources/js/angular.min.js"></script>
+<script src="resources/js/angular-route.min.js"></script>
+<script src="resources/js/ngcontroller.js"></script>
 </body>
 </html>
