@@ -1,17 +1,24 @@
 package com.app.service.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.app.dao.NewsDao;
 import com.app.model.News;
 import com.app.service.NewsService;
 
 @Service("newsService")
 public class NewsServiceImpl implements NewsService 
 {
-	private static ArrayList<News> newsList = new ArrayList();
+    @Autowired
+    private NewsDao newsDao;
+	
+	private static ArrayList<HashMap> newsList = new ArrayList();
 	
 	private static int NEWS_NUM = 10;
 	
@@ -19,22 +26,24 @@ public class NewsServiceImpl implements NewsService
 	{
 		newsList.clear();
 	}
-	
-	public void  update()
-	{
-		//数据库查询语句操作，查询当月最新的十条新闻
-		//将查询的新闻数据的id，新闻标题，和新闻时间，重新组装成News对象
-		//将News数据更新到内存
-	}
-
-	public List<News> getAllNews() 
+	@SuppressWarnings("unchecked")
+	@Transactional
+	public List<HashMap> getAllNews() 
 	{
 		if (newsList.size() != NEWS_NUM || newsList.isEmpty())
 		{
 			clearList();
-			update();		
+			
+			for(News tmp:newsDao.selectCurMonthListNews())
+			{
+				HashMap<String, String> newsMap = new HashMap<String, String>();
+				newsMap.put("date", "2016-06-15");
+				newsMap.put("content", tmp.getTitle());
+				newsMap.put("http", "contents/page.html");
+				newsList.add(newsMap);
+			}
+			
 		}
-		
 		return newsList;
 	}
 

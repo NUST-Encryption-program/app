@@ -6,10 +6,12 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
     <!-- 命名空间 -->
     <typeAliases>
          <typeAlias alias="LoginForm" type="com.app.model.LoginForm"/>
+         <typeAlias alias="News" type="com.app.model.News"/>
     </typeAliases>
  
     <!-- 映射map -->
     <mappers>
     	<mapper resource="conf/mapper/UserMapper.xml" />
+    	<mapper resource="conf/mapper/NewsMapper.xml" />
     </mappers>
 </configuration>

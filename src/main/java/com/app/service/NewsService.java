@@ -1,5 +1,6 @@
 package com.app.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.app.model.News;
@@ -7,7 +8,7 @@ import com.app.model.News;
 public interface NewsService 
 {
 	
-    public List<News> getAllNews();
+    public List<HashMap> getAllNews();
 
     public void addNews(News news);
 

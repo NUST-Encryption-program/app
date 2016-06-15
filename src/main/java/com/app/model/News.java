@@ -6,6 +6,8 @@ public class News
 	
 	private String content;
 	
+	private String title;
+	
 	private String id;
 
 	public String getData() 
@@ -36,6 +38,14 @@ public class News
 	public void setId(String id) 
 	{
 		this.id = id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	
 	
