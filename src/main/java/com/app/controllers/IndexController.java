@@ -3,6 +3,7 @@ package com.app.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.app.exceptionofmysql.GetConnectionSqlServer;
 /**
  * Created with IntelliJ IDEA.
  * User: xvitcoder
@@ -15,6 +16,8 @@ public class IndexController {
 
     @RequestMapping
     public String getIndexPage() {
-        return "index";
+    	GetConnectionSqlServer getConn = new GetConnectionSqlServer();  
+        getConn.getConnectionSqlServer(); 
+    	return "index";
     }
 }

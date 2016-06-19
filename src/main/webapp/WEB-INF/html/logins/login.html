@@ -23,20 +23,28 @@
 	<div class="login-box">
 		<div class="box-con tran">
 			<div class="login-con f-l">
+			
+			
+			 <form id="login-form" action="login/Ecuser" name="login" method="post" novalidate="true">
 				<div class="form-group">
-					<input type="text" placeholder="邮箱/手机号码"/>
+					<input type="text" placeholder="邮箱/手机号码"/ name="usernamee">
 					<span class="error-notic">邮箱/手机号码不正确</span>
 				</div>
 				<div class="form-group">
-					<input type="password" placeholder="密码">
+					<input type="password" placeholder="密码" name="passwd">
 					<span class="error-notic">密码不正确</span>
 				</div>
+		     
 				<div class="form-group">
 					<button type="submit" class="tran pr">
-						<a href="javascript:;" class="tran">登录</a>
+						<a class="tran">登录</a>
 						<img class="loading" src="../resources/images/loading.gif" style="display:block">
 					</button>
 				</div>
+			  </form>
+				
+				
+				
 				<div class="from-line"></div>
 				<div class="form-group">
 					<a href="javascript:;" class="move-signup a-tag tran blue-border">还没有帐号？免费注册<i class="iconfont tran">&#xe606;</i></a>
@@ -305,6 +313,9 @@
 				}
 			}//验证验证码
 		}
+		jQuery(document).ready(function(){
+			  $('#login-form').validator();
+	      });
 	</script>
 	
 </body>
