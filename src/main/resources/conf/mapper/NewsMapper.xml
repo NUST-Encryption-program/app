@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.app.dao.NewsDao">
+    <resultMap id="usersMap" type="News">
+        <id property="id" column="news_id" />
+        <result property="title" column="news_title" />
+        <result property="content" column="news_content" />
+    </resultMap>
+    <!-- select语句 -->
+    <select id="selectCurMonthListNews" resultMap="usersMap">
+       select ec_new.id news_id, ec_new.title news_title, ec_new.content news_content from ec_new
+    </select>         
+</mapper>
