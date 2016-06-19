@@ -7,11 +7,13 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
     <typeAliases>
          <typeAlias alias="LoginForm" type="com.app.model.LoginForm"/>
          <typeAlias alias="News" type="com.app.model.News"/>
+          <typeAlias alias="Ecuser" type="com.app.model.Ecuser"/>
     </typeAliases>
  
     <!-- 映射map -->
     <mappers>
     	<mapper resource="conf/mapper/UserMapper.xml" />
     	<mapper resource="conf/mapper/NewsMapper.xml" />
+    	<mapper resource="conf/mapper/EcuserMapper.xml" />
     </mappers>
 </configuration>
