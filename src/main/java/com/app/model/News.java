@@ -1,8 +1,12 @@
 package com.app.model;
 
+import java.sql.Date;
+
 public class News 
 {
 	private String data;
+	
+	private Date dateofnews;
 	
 	private String content;
 	
@@ -48,6 +52,17 @@ public class News
 		this.title = title;
 	}
 	
+	  
 	
+	
+    public Date getDateofnews()
+	    {
+	        return dateofnews;
+	    }
+	    
+	    public void setDateofnews(Date dateofnews)
+	    {
+	        this.dateofnews = dateofnews;
+	    }
 
 }

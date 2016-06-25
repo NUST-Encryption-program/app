@@ -11,7 +11,10 @@ public interface NewsDao
 	public ArrayList<News> selectCurMonthListNews();
 	
 	//查询上个月最新的10条新闻纪录
-	public List<News> selectPreMonthListNews();
+	public  ArrayList<News> selectPreMonthListNews();
+	
+	//查询现在最新的一条新闻
+	public  ArrayList<News> selectCurFirstNew();
 	
 	//新增新闻
 	public boolean addNews(News news);

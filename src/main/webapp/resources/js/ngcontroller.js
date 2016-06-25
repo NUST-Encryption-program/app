@@ -112,13 +112,34 @@ var learning = [
 		    $scope.newsItems = news
 		});
 		$http.get("news/oldnews.json").success(function(data) {
-            $scope.oldNewsItems = data.freetrial;
+			
+			if (data == null || data == "")
+			{
+				$scope.oldNewsItems = news;
+			}
+			else
+			{
+				$scope.oldNewsItems = data;
+			}
+			
+			
+			
+           // $scope.oldNewsItems = data.freetrial;
 		}).error(function(data) {  
 		    $scope.oldNewsItems = oldnews
 		});
-        $scope.remove = function (index) {
-            $scope.items.splice(index, 1);
-        }
+		$http.get("news/firstnews.json").success(function(data) {
+			if (data == null || data == "")
+			{
+				$scope.firstnewsItems = news;
+			}
+			else
+			{
+				$scope.firstnewsItems = data;
+			}
+		}).error(function(data) {  
+		    $scope.firstnewsItems = news
+		});
     }
 	
 
