@@ -91,7 +91,40 @@ public class NewsServiceImpl implements NewsService
 	
 	
 	
+	@Autowired
+	 private NewsDao firstNewsDao;
 	
+	private static ArrayList<HashMap> firstNewsList = new ArrayList();
+	
+	private static int FIRST_NUM = 1;
+	
+	private void clearfirstList()
+	{
+		firstNewsList.clear();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Transactional
+	public List<HashMap> getFirstNew() 
+	{   
+		if (firstNewsList.size() != FIRST_NUM ||firstNewsList.isEmpty())
+		{
+			clearfirstList();
+
+			for(News tmp:firstNewsDao.selectCurFirstNew())
+			{ 
+				HashMap<String, String> newsMap = new HashMap<String, String>();
+				newsMap.put("date", tmp.getDateofnews().toString());
+				newsMap.put("content", tmp.getTitle());
+				newsMap.put("detailcontent", tmp.getContent());
+				newsMap.put("http", "contents/page.html");
+				firstNewsList.add(newsMap);
+			}
+			
+		}
+		
+		return firstNewsList;
+	}
 	
 	
 	

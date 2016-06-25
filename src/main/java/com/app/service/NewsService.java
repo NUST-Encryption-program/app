@@ -20,6 +20,6 @@ public interface NewsService
 
 	public List<HashMap> getAllOldNews();
 
-
+	public List<HashMap> getFirstNew();
 
 }
