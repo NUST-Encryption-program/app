@@ -18,4 +18,8 @@ public interface NewsService
     
     public void updateNews(News news);
 
+	public List<HashMap> getAllOldNews();
+
+
+
 }

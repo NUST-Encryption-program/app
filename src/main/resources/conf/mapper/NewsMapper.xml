@@ -7,9 +7,22 @@
         <id property="id" column="news_id" />
         <result property="title" column="news_title" />
         <result property="content" column="news_content" />
+        <result property="dateofnews" column="news_dateofnews" />
     </resultMap>
     <!-- select语句 -->
     <select id="selectCurMonthListNews" resultMap="usersMap">
-       select ec_new.id news_id, ec_new.title news_title, ec_new.content news_content from ec_new
-    </select>         
+       SELECT *FROM ec_new WHERE dateofnews &gt;='2016-06-01' ORDER BY dateofnews DESC 
+    </select>
+    
+        
+  <resultMap id="usersMap2" type="News">
+        <id property="id" column="news_id" />
+        <result property="title" column="news_title" />
+        <result property="content" column="news_content" />
+        <result property="dateofnews" column="news_dateofnews" />
+    </resultMap>
+    <select id="selectPreMonthListNews" resultMap="usersMap2">
+       SELECT *FROM ec_new WHERE dateofnews &lt;='2016-05-31' ORDER BY dateofnews DESC  
+    </select>   
+         
 </mapper>

@@ -20,12 +20,17 @@ public class NewsServiceImpl implements NewsService
 	
 	private static ArrayList<HashMap> newsList = new ArrayList();
 	
-	private static int NEWS_NUM = 10;
+	private static int NEWS_NUM = 11;
 	
 	private void clearList()
 	{
 		newsList.clear();
 	}
+	
+	
+	
+	
+	
 	@SuppressWarnings("unchecked")
 	@Transactional
 	public List<HashMap> getAllNews() 
@@ -37,16 +42,65 @@ public class NewsServiceImpl implements NewsService
 			for(News tmp:newsDao.selectCurMonthListNews())
 			{
 				HashMap<String, String> newsMap = new HashMap<String, String>();
-				newsMap.put("date", "2016-06-15");
+				newsMap.put("date", tmp.getDateofnews().toString());
 				newsMap.put("content", tmp.getTitle());
+				newsMap.put("detailcontent", tmp.getContent());
 				newsMap.put("http", "contents/page.html");
 				newsList.add(newsMap);
+				//System.out.println(tmp.getDateofnews().toString());
 			}
 			
 		}
 		return newsList;
 	}
+	@Autowired
+	 private NewsDao oldNewsDao;
+	
+	private static ArrayList<HashMap> oldNewsList = new ArrayList();
+	
+	private static int OLDNEWS_NUM = 9;
+	
+	private void clearOldList()
+	{
+		oldNewsList.clear();
+	}
 
+	@SuppressWarnings("unchecked")
+	@Transactional
+	public List<HashMap> getAllOldNews() 
+	{   
+		if (oldNewsList.size() != OLDNEWS_NUM ||oldNewsList.isEmpty())
+		{
+			clearOldList();
+			//System.out.println("getAllOldNews第一个if过了");
+			for(News tmp:oldNewsDao.selectPreMonthListNews())
+			{  //System.out.println("getAllOldNews第一个if过了for内");
+				HashMap<String, String> newsMap = new HashMap<String, String>();
+				newsMap.put("date", tmp.getDateofnews().toString());
+				newsMap.put("content", tmp.getTitle());
+				newsMap.put("detailcontent", tmp.getContent());
+				newsMap.put("http", "contents/page.html");
+				oldNewsList.add(newsMap);
+				//System.out.println(tmp.getDateofnews().toString());
+			}
+			
+		}
+		
+		return oldNewsList;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public void addNews(News news) 
 	{
 		// TODO Auto-generated method stub

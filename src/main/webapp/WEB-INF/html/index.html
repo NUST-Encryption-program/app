@@ -70,9 +70,15 @@
     <div class="con" ng-controller="NewsController">
       <div class="news-pic">
         <div class="pic"><img src="resources/images/news-pic-1.jpg" /></div>
-        <h1>理学院开展预备党员座谈会</h1>
-        <div class="txt">6月3日，理学院2013级邀请到了理学院前党委书记杨泰敏老同志参加年级第三批预备党员的座谈会，杨老师为同学们生动幽默地讲述了该如何做一名合格党员。
-</div>
+        
+        <dl>
+          <h4>
+            <dd ng-repeat="item in firstnewsItems"><span>{{item.date}}</span><a href="{{item.http}}">{{item.content}}</a></dd>
+          </h4>   
+            <dl ng-repeat="item in firstnewsItems"><h3>&nbsp;{{item.detailcontent}}</h3></dl>
+        
+        </dl>
+         
       </div>
       <div class="news-list1">
 	  
