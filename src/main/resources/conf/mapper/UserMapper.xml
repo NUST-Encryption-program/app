@@ -8,11 +8,12 @@
 <mapper namespace="com.app.dao.UserDao">
    
  <resultMap id="UserDao" type="LoginForm" >
+    <result column="email" property="email" />
     <result column="username" property="username" />
     <result column="pwd" property="password" />
   </resultMap>        
   <insert id="insertUser" parameterType="LoginForm">
-      insert into users(username, pwd) values (#{username}, #{password})
+      insert into ec_user(id, group_id, email, username, password, registerTime, registerIP, lastLoginTime, lastLoginIP, loginCount, rank, uploadSize, uploadDate, admin, viewonlyAdmin, selfAdmin, disabled) values (#{s}, #{m}, #{email}, #{username}, #{password}, #{s}, #{s}, #{s}, #{s}, #{n}, #{n}, #{n}, #{s}, #{n}, #{n}, #{n}, #{n})
   </insert>
           
 </mapper>

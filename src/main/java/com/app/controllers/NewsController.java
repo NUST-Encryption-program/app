@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.management.MBeanServer;
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,16 +27,17 @@ public class NewsController
 	@RequestMapping("/news/news.json")
 	public @ResponseBody List<HashMap> getNewsList() 
 	{   
-		
+		//System.out.println("asdfasdfasdfasdfasdfasdf");
+		//System.out.println("newsService.getAllNews().get(0)="+newsService.getAllNews().get(0));
 		
 		return newsService.getAllNews();
 	}
     
 	
-	
 	@RequestMapping("/news/oldnews.json")
 	public @ResponseBody List<HashMap> getOldNewsList() 
 	{   
+		System.out.println("newsService.getAllOldNews().get(0)="+newsService.getAllOldNews().get(0));
 		return newsService.getAllOldNews();
 	}
 	

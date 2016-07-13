@@ -21,5 +21,7 @@ public interface NewsDao
 	
 	//更新新闻
 	public boolean updateNews(News news);
+
+	public  ArrayList<News> selectTheNewById(String id);
 	
 }

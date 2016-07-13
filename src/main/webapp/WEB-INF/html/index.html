@@ -6,10 +6,12 @@
 <link href="resources/css/global.css" rel="stylesheet" type="text/css">
 <link href="resources/css/reset.css" rel="stylesheet" type="text/css">
 <link href="resources/css/index.css" rel="stylesheet" type="text/css">
-<script src="js/jquery-1.11.3.min.js"></script>
+<script src="resources/js/jquery-1.11.3.min.js"></script>
+<style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide{display:none !important;}ng\:form{display:block;}.ng-animate-start{clip:rect(0,auto,auto,0);-ms-zoom:1.0001;}.ng-animate-active{clip:rect(-1px,auto,auto,0);-ms-zoom:1;}
+</style>
 </head>
 
-<body>
+<body ng-cloak class="ng-cloak">
 <div class="g-hd">
   <div class="m-login">
     <ul>
@@ -41,7 +43,7 @@
   <div class="m-banner">
     <div id="playBox">
       <div class="playBox">
-        <script src="js/banner.js"></script>
+        <script src="resources/js/banner.js"></script>
         <div class="pre"></div>
         <div class="next"></div>
         <div class="smalltitle">
@@ -73,7 +75,7 @@
         
         <dl>
           <h4>
-            <dd ng-repeat="item in firstnewsItems"><span>{{item.date}}</span><a href="{{item.http}}">{{item.content}}</a></dd>
+            <dd ng-repeat="item in firstnewsItems"><span>{{item.date}}</span><a href="contents/{{item.idofnews}}">{{item.content}}</a></dd>
           </h4>   
             <dl ng-repeat="item in firstnewsItems"><h3>&nbsp;{{item.detailcontent}}</h3></dl>
         
@@ -83,14 +85,14 @@
       <div class="news-list1">
 	  
         <dl>
-          <dt><span><a href="#">MORE</a></span>2016-05</dt>
-          <dd ng-repeat="item in newsItems"><span>{{item.date}}</span><a href="{{item.http}}">{{item.content}}</a></dd>
+          <dt><span><a href="#">MORE</a></span>2016-06</dt>
+          <dd ng-repeat="item in newsItems"><span>{{item.date}}</span><a href="contents/{{item.idofnews}}">{{item.content}}</a></dd>
         </dl>
       </div>
       <div class="news-list2">
         <dl>
-          <dt><span><a href="#">MORE</a></span>2016-04</dt>
-          <dd ng-repeat="item in oldNewsItems"><span>{{item.date}}</span><a href="{{item.http}}">{{item.content}}</a></dd>
+          <dt><span><a href="#">MORE</a></span>2016-05</dt>
+          <dd ng-repeat="item in oldNewsItems"><span>{{item.date}}</span><a href="contents/{{item.idofnews}}">{{item.content}}</a></dd>
         </dl>
       </div>
       <div class="f-cb"></div>

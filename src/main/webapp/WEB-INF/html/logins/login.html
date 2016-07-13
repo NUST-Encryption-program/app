@@ -27,7 +27,10 @@
 			
 			 <form id="login-form" action="login/Ecuser" name="login" method="post" novalidate="true">
 				<div class="form-group">
-					<input type="text" placeholder="邮箱/手机号码"/ name="usernamee">
+				  <!--  
+					<input type="text" placeholder="邮箱/手机号码" name="usernamee" onBlur="verify.verifyMobile(this) || verify.verifyEmail(this)">
+					-->
+					<input type="text" placeholder="邮箱/手机号码" name="usernamee" >
 					<span class="error-notic">邮箱/手机号码不正确</span>
 				</div>
 				<div class="form-group">
@@ -58,30 +61,34 @@
 			</div>
 			<!-- 登录 -->
 
+
+            <form id="reg-form" action="login/signin" name="register" method="post" novalidate="true">
 			<div class="signup f-l">
 				<div class="form-group">
 					<div class="signup-form">
-						<input type="text" placeholder="邮箱" class="email-mobile" onBlur="verify.verifyEmail(this)">
+						<input type="text" placeholder="邮箱" class="email-mobile" onBlur="verify.verifyEmail(this)" name="em">
 						<a href="javascript:;" class="signup-select">手机注册</a>
 					</div>
 					<span class="error-notic">邮箱格式不正确</span>
 				</div>
 				<div class="signup-email">
 					<div class="form-group">
-						<input type="text" placeholder="您的名字">
+						<input type="text" placeholder="您的名字" name="us">
 					</div>
 					<div class="form-group">
-						<input type="password" placeholder="密码（字母、数字，至少6位）" onBlur="verify.PasswordLenght(this)">
+						<input type="password" placeholder="密码（字母、数字，至少6位）" onBlur="verify.PasswordLenght(this)" name="pwd">
 						<span class="error-notic">密码长度不够</span>
 					</div>
 					<div class="form-group">
 						<button type="submit" class="tran pr">
-							<a href="javascript:;" class="tran">注册</a>
+							<a class="tran">注册</a>
 							<img class="loading" src="../resources/images/loading.gif">
 						</button>
 					</div>
 					<p class="view-clause">点击注册，即同意我们的 <a href="#">用户隐私条款</a></p>
 				</div><!-- 邮箱注册 -->
+				</form>
+				
 				<div class="signup-tel" style="display:none">
 					<div class="signup-form" id="message-inf" style="display:none">
 						<input type="text" placeholder="短信验证码" style="width:180px;" onBlur="verify.VerifyCount(this)">

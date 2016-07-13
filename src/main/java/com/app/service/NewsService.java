@@ -3,6 +3,8 @@ package com.app.service;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.app.model.News;
 
 public interface NewsService 
@@ -21,5 +23,7 @@ public interface NewsService
 	public List<HashMap> getAllOldNews();
 
 	public List<HashMap> getFirstNew();
+	 
+	public List<HashMap> getSelectedNewById(String idofselectednew);
 
 }

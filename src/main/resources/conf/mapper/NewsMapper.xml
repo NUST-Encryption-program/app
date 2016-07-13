@@ -32,4 +32,27 @@
       <select id="selectCurFirstNew" resultMap="usersMap3">   
          select * from ec_new where dateofnews=(select max(dateofnews) from ec_new)
       </select>
+      
+      
+      
+      
+      
+       <resultMap id="usersMap4" type="News">
+        <id property="id" column="news_id" />
+        <result property="title" column="news_title" />
+        <result property="content" column="news_content" />
+        <result property="dateofnews" column="news_dateofnews" />
+    </resultMap>     
+      <select id="selectTheNewById" resultMap="usersMap4">   
+         select * from ec_new where id=#{id}
+      </select>
+      
+      
+      
+      
+      
+      
+      
+      
+      
 </mapper>

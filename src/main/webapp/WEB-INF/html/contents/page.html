@@ -7,9 +7,14 @@
   <meta name="keywords" content="website keywords, website keywords" />
   <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
   <link rel="stylesheet" type="text/css" href="../resources/css/content.css" />
-</head>
+  
+  <script src="js/jquery-1.11.3.min.js"></script>
+  <script src="js/banner.js"></script>
+  <meta charset="utf-8">
+  <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+ </head>
 
-<body>
+<body>   
   <div id="main">
     <div id="header">
       <div id="logo">
@@ -71,15 +76,17 @@
           </div>
           <div class="sidebar_base"></div>
         </div>
-
-      </div>
-      <div id="content">
-        <!-- insert the page content here -->
-        <h1>A Page</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui.</p>
+      </div>  
+     <div ng-app="myApp" ng-controller="NewsController"> 
+         <ul>
+             <dl ng-repeat="x in newsItems">
+                 
+                  <p> </p>
+                <h1 align="center"> {{x.content}}</h1>
+                  <p> </p>
+                <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{x.detailcontent}}</h3> 
+             </dl>
+         </ul>
       </div>
     </div>
     <div id="content_footer"></div>
@@ -88,5 +95,48 @@
       <p>Copyright &copy; crypt lab</p>
     </div>
   </div>
+  
+  
+
+
+
+
+<SCRIPT LANGUAGE="JavaScript"> 
+       
+var app = angular.module('myApp', []);
+app.controller('NewsController', function($scope, $http) {
+	//alert(1);
+	$http({
+		url:'news/selectednews.json',
+		method:'GET'
+		}).success(function(data){
+			$scope.newsItems = data;
+			//响应成功
+		}).error(function(data){
+			$scope.newsItems = news;//处理响应失败
+		});
+
+});
+
+var news =  [
+             {date: "2016-06-07", content: "2016年第十三届全国研究生数学建模竞赛赛前培训通知", http: "http://gs.njust.edu.cn/c1/2c/c4568a114988/page.htm"},
+             {date: "2016-05-31", content: "2016年本科数模竞赛获奖名单公示与培训安排", http: "http://jwc.njust.edu.cn/c1/9e/c1217a115102/page.htm"},
+             {date: "2016-05-28", content: "理学院召开关工委讲座学习陈赓“老院长”生平", http: "http://lxy.njust.edu.cn/_s73/bd/ba/c4425a114106/page.psp"},
+ 			{date: "2016-05-27", content: "理学院2014级成立学“习”小组，认真落实“两学一做”", http: "http://lxy.njust.edu.cn/_s73/bc/cc/c4425a113868/page.psp"},
+ 			{date: "2016-05-25", content: "南京师范大学数学系尹会成教授来理学院作学术报告", http: "http://lxy.njust.edu.cn/_s73/bc/12/c4425a113682/page.psp"},
+ 			{date: "2016-05-20", content: "理学院践行“两学一做”，提升研究生教育管理水平", http: "http://lxy.njust.edu.cn/_s73/ba/95/c4425a113301/page.psp"},
+ 			{date: "2016-05-15", content: "理学院举办职业生涯规划大赛", http: "http://lxy.njust.edu.cn/_s73/ba/93/c4425a113299/page.psp"},
+ 			{date: "2016-05-15", content: "理学院举办简历设计及招聘模拟大赛", http: "http://lxy.njust.edu.cn/_s73/ba/33/c4425a113203/page.psp"},
+ 			{date: "2016-05-13", content: "理学院2014级举办“温情5月，送爱回家”活动", http: "http://lxy.njust.edu.cn/_s73/b9/de/c4425a113118/page.psp"},
+ 			{date: "2016-05-07", content: "理学院大三“学霸”考取北大研究生引多家媒体争相报道", http: "http://lxy.njust.edu.cn/_s73/b9/47/c4425a112967/page.psp"},
+ 			
+         ];
+</SCRIPT>
+
+
+
+  
+  
+  
 </body>
 </html>
